@@ -1,25 +1,88 @@
-import logo from './logo.svg';
-import './App.css';
+// import React , {useEffect , useState} from 'react'
+// import { ReactDOM } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+ //COUNTER
+
+// const App = () => {
+
+//   const [count ,setcount] = useState(0);
+
+//   useEffect( ()=>{
+
+//   },[])
+  
+//   const inc = ()=>{
+//     setcount(count+1);
+
+//   }
+//   const dec = () => {
+//     if(count > 0) {
+//       setcount(count - 1);
+//     }
+//   }
+//   return (
+//     <div>
+//       {count} 
+//       <button onClick={inc}>+</button> 
+//       <button onClick={dec}>-</button>
+//     </div>
+//   )
+// }
+
+// export default App
+
+
+// TIMER
+
+// import React, { useState, useEffect } from 'react';
+// import ReactDOM from 'react-dom';
+
+// function App() {
+  //function baseComponent
+
+//   let time = new Date().toLocaleTimeString();
+//   const [ctime, settime] = useState(time);
+
+//   const updatetime = () => {
+//     time = new Date().toLocaleTimeString();
+//     settime(time);
+
+//   }
+//   useEffect(() => {
+//     setInterval(updatetime, 1000);
+//   }, []);
+
+//   return (
+//     <div>
+//       <h2>{ctime}</h2>
+//     </div>
+//   );
+// }
+
+// export default App;
+
+import React, { Component } from 'react'
+
+export default class App extends Component {
+  constructor(){
+    super();
+        this.state = {
+          
+        };
+      }
+      componentDidMount(){
+        setInterval(() => {
+            this.setState({ data : new Date().toLocaleTimeString() });
+        },1000);
+        
+
+      }
+    
+  render() {
+    return (
+      <div>
+        {this.state.data} 
+      </div>
+    )
+  }
 }
-
-export default App;
