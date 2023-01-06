@@ -1,88 +1,106 @@
-// import React , {useEffect , useState} from 'react'
-// import { ReactDOM } from 'react';
+import React from "react";
 
- //COUNTER
+const App = () => {
+  const items = [
+    {
+      id: 1,
+      name: "Product 1",
+      quantity: 2,
+      price: 10.99,
+      options: [
+        {
+          color: "red",
+        },
+        {
+          size: "large",
+        },
+      ],
+    },
+    {
+      id: 2,
+      name: "Product 2",
+      quantity: 1,
+      price: 29.99,
+      options: [
+        {
+          color: "blue",
+        },
+        {
+          size: "small",
+        },
+      ],
+    },
+    {
+      id: 3,
+      name: "Product 3",
+      quantity: 3,
+      price: 5.99,
+      options: [
+        {
+          color: "green",
+        },
+        {
+          size: "medium",
+        },
+      ],
+    },
+  ];
 
-// const App = () => {
+  const totalPrice = items.reduce((acc, cur) => {
+    const tprice = cur.price * cur.quantity;
+    return acc + tprice;
+  }, 0);
 
-//   const [count ,setcount] = useState(0);
+  return (
+    <div className="App">
+      <table border={1}>
+        <tbody>
+          <tr>
+            <th>id</th>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
 
-//   useEffect( ()=>{
+            <th>
+              options
+              <tr>
+                <th>color</th>
+                <th>Size</th>
+              </tr>
+            </th>
 
-//   },[])
-  
-//   const inc = ()=>{
-//     setcount(count+1);
+            <th>total</th>
+          </tr>
+          {items.map((i) => {
+            return (
+              <tr key={Math.random(i)}>
+                <td>{i.id}</td>
+                <td>{i.name}</td>
+                <td>{i.quantity}</td>
+                <td>{i.price}</td>
 
-//   }
-//   const dec = () => {
-//     if(count > 0) {
-//       setcount(count - 1);
-//     }
-//   }
-//   return (
-//     <div>
-//       {count} 
-//       <button onClick={inc}>+</button> 
-//       <button onClick={dec}>-</button>
-//     </div>
-//   )
-// }
+                <td>
+                  {i.options.map((o) => {
+                    return (
+                      <td key={Math.random(o)}>
+                        {o.color}
+                        {o.size}
+                      </td>
+                    );
+                  })}
+                </td>
+                <td>{i.price * i.quantity}</td>
+              </tr>
+            );
+          })}
+          <tr>
+            <td colSpan={5}>totalPrice</td>
+            <td>{totalPrice}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  );
+};
 
-// export default App
-
-
-// TIMER
-
-// import React, { useState, useEffect } from 'react';
-// import ReactDOM from 'react-dom';
-
-// function App() {
-  //function baseComponent
-
-//   let time = new Date().toLocaleTimeString();
-//   const [ctime, settime] = useState(time);
-
-//   const updatetime = () => {
-//     time = new Date().toLocaleTimeString();
-//     settime(time);
-
-//   }
-//   useEffect(() => {
-//     setInterval(updatetime, 1000);
-//   }, []);
-
-//   return (
-//     <div>
-//       <h2>{ctime}</h2>
-//     </div>
-//   );
-// }
-
-// export default App;
-
-import React, { Component } from 'react'
-
-export default class App extends Component {
-  constructor(){
-    super();
-        this.state = {
-          
-        };
-      }
-      componentDidMount(){
-        setInterval(() => {
-            this.setState({ data : new Date().toLocaleTimeString() });
-        },1000);
-        
-
-      }
-    
-  render() {
-    return (
-      <div>
-        {this.state.data} 
-      </div>
-    )
-  }
-}
+export default App;
